@@ -11,15 +11,15 @@ namespace InsertionSort
 
             for (int i = 1; i < UnsortedList.Count; i++)
             {
-                if (UnsortedList[i] > UnsortedList[i - 1])
+                if (UnsortedList[i] < UnsortedList[i - 1])
                 {
-                    for (int y = i; i < 0; y++)
+                    for (int y = i; y >= 1; y--)
                     {
-                        if(UnsortedList[i] < UnsortedList[y])
+                        if (UnsortedList[y] < UnsortedList[y - 1])
                         {
-                            temp = UnsortedList[i];
-                            UnsortedList[y] = temp;
-                            UnsortedList[i] = UnsortedList[y];
+                            temp = UnsortedList[y];
+                            UnsortedList[y] = UnsortedList[y - 1];
+                            UnsortedList[y - 1] = temp;
                         }
                     }
                 }
@@ -28,7 +28,7 @@ namespace InsertionSort
 
         static void Main(string[] args)
         {
-            List<int> List = new List<int> { 4, 9, 1, 43, 22, 10 };
+            List<int> List = new List<int> { 54, 26, 93, 17, 77, 31, 44, 55, 20};
 
             InsertionSort(List);
         }
